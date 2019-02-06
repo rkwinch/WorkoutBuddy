@@ -13,29 +13,24 @@ import java.io.*;
 public class User{
 
     public String name;
-    public History userHistory;
-    ArrayList<Integer> todayWorkout = new ArrayList<Integer>();
-    ArrayList<Integer> prevWorkout = new ArrayList<Integer>();
-    public User(){
-        userHistory = new History();
+    public ArrayList<Integer> workoutOptionHistory;
+    public ArrayList<String> dateHistory;
+    
+    public User(){ 
         name = "";
-        todayWorkout.clear(); // clears current contents of array list to ensure
-                              // it is empty
+        workoutOptionHistory = new ArrayList<Integer>();
+        dateHistory = new ArrayList<String>();
     }// end of User constructor
-    public void save(User name, ArrayList<Integer> todayWorkout, 
-            ArrayList<Integer> prevWorkout) throws FileNotFoundException
+    
+    public void save() throws FileNotFoundException
     {
-        for(int i = 0; i < name.todayWorkout.size(); i++)
-        {
-            name.prevWorkout.add(name.todayWorkout.get(i));
-        }
-        name.todayWorkout.clear();
         PrintWriter outFile = null;
         try
         {
         outFile = new PrintWriter("WorkoutOutput.txt");
-        outFile.print(name.name);
-        outFile.print(" " + name.prevWorkout);
+        outFile.print(name);
+        outFile.print(" " + workoutOptionHistory);
+        outFile.print(" " + dateHistory);
         }
         finally
         {
@@ -44,15 +39,17 @@ public class User{
                 outFile.close();
             }
         }
-        System.out.println(name.prevWorkout);
+        //System.out.println(name.prevWorkout);
     }
+    
+    
     public int workoutOption()
     {
         int option = 0;
         System.out.println("Please select your workout (1,2,3)");
         Scanner scanner = new Scanner(System.in);
         option = scanner.nextInt();
-        System.out.println("You chose option " + option);
+        //System.out.println("You chose option " + option);
         while(option != 1 && option != 2 && option != 3)
         {
             System.out.println("You did not select a valid option");
