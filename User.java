@@ -22,7 +22,7 @@ public class User{
         dateHistory = new ArrayList<String>();
     }// end of User constructor
     
-    public void save() throws FileNotFoundException
+    public void Save() throws FileNotFoundException
     {
         PrintWriter outFile = null;
         try
@@ -39,11 +39,10 @@ public class User{
                 outFile.close();
             }
         }
-        //System.out.println(name.prevWorkout);
     }
     
     
-    public int workoutOption()
+    public int WorkoutOption()
     {
         int option = 0;
         System.out.println("Please select your workout (1,2,3)");

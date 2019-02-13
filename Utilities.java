@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.time.Duration;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Random;
 
 
 public class Utilities {
@@ -16,9 +17,9 @@ public class Utilities {
     
     public Utilities() {
         
-    }// end of History constructor
+    }// end of Utilities constructor
 
-    public static void showTime() {
+    public static void ShowTime() {
         String input;
         System.out.println("Please hit Enter to start the time.");
         Scanner scanner = new Scanner(System.in);
@@ -45,7 +46,7 @@ public class Utilities {
             }
             else
             {
-                printTime(minutes, seconds, deciseconds);
+                PrintTime(minutes, seconds, deciseconds);
             }
             try 
             {
@@ -53,7 +54,7 @@ public class Utilities {
                 {
                     input = scanner.nextLine();
                     System.out.println("Elapsed time is:  ");
-                    printTime(minutes, seconds, deciseconds);
+                    PrintTime(minutes, seconds, deciseconds);
                     break;
                 }
             } 
@@ -63,9 +64,9 @@ public class Utilities {
             }
             prevDeciseconds = deciseconds;
         }
-    }//end of showTime fxn
+    }//end of ShowTime fxn
 
-    public static void printMinutesIfGreaterThanZero(long minutes) 
+    public static void PrintMinutesIfGreaterThanZero(long minutes) 
     {
         if (minutes == 0) 
         {
@@ -75,31 +76,45 @@ public class Utilities {
         {
             System.out.print(minutes + "min ");
         }
-    }//end of printMinutesIfGreaterThanZero fxn
+    }//end of PrintMinutesIfGreaterThanZero fxn
 
-    public static void printSecondsIfGreaterThanZero(long seconds) 
+    public static void PrintSecondsIfGreaterThanZero(long seconds) 
     {
         System.out.print(seconds);  
     }//end of printSecondsIfGreaterThanZero fxn
 
-    public static void printDeciseconds(long deciseconds) 
+    public static void PrintDeciseconds(long deciseconds) 
     {
         System.out.println("." + deciseconds + "s");
     }
     
-    public static void printTime(long minutes, long seconds, 
+    public static void PrintTime(long minutes, long seconds, 
             long deciseconds)
     {
-        printMinutesIfGreaterThanZero(minutes);
-        printSecondsIfGreaterThanZero(seconds);
-        printDeciseconds(deciseconds);
-    }// end of printTime fxn
+        PrintMinutesIfGreaterThanZero(minutes);
+        PrintSecondsIfGreaterThanZero(seconds);
+        PrintDeciseconds(deciseconds);
+    }// end of PrintTime fxn
     
-    public static String stringDate()
+    public static String StringDate()
     {
         Date date = new Date();
         String currentDate = String.format("%tm%<td%<tY", date);
         return currentDate;
     }
+    
+    public static int GenerateRandomNumberOneToTwo()
+    {
+      Random rand = new Random();
+      int randomNumber = rand.nextInt(2) + 1; // to get # between 1-2
+      return randomNumber;
+    }
+    
+    public static int GenerateRandomNumberOneToFour()
+    {
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(4) + 1; // to get # between 1-4
+        return randomNumber;
+    }
 
-}//end of History Class
+}//end of Utilities Class
